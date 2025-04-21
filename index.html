@@ -2,13 +2,116 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>IT </title>
+    <title>Augmented Reality IT Support Troubleshooter</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/AR.js/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs>
 
+    <!-- Finish Button -->
+    <button id="finish-btn" class="action-button">Finish Troubleshooting</button>
+
+    <!-- Finish Troubleshooting? -->
+    <div id="finish-message" class="hidden">
+      <div class="finish-message-container container">
+        <h2>Finish Troubleshooting</h2>
+        <div class="divider"></div>
+        <p>Are you ready to finish troubleshooting? Note that once you finish, <span class="emphasis">you'll no longer be able to access the AR markers</span>, and you'll present your findings to your instructor.</p>
+        <button id="confirm-finish" class="action-button full-width">Yes, Finish Troubleshooting</button>
+        <button id="cancel-finish" class="action-button full-width">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div id="summary" class="hidden">
+      <div class="summary-container container">
+        <h2>Summary</h2>
+        <div class="divider"></div>
+    
+        <div class="summary-item" id="summary-1">
+          <label for="notes-1">Issue 1 Notes:</label>
+          <p id="notes-1">Note</p>
+        </div>
+    
+        <div class="summary-item" id="summary-2">
+          <label for="notes-2">Issue 2 Notes:</label>
+          <p id="notes-2">Note</p>
+        </div>
+    
+        <div class="summary-item" id="summary-3">
+          <label for="notes-3">Issue 3 Notes:</label>
+          <p id="notes-3">Note</p>
+        </div>
+    
+        <div class="summary-item" id="summary-4">
+          <label for="notes-4">Issue 4 Notes:</label>
+          <p id="notes-4">Note</p>
+        </div>
+        
+      </div>
+    </div> 
+
+
+    <!-- Scenario Overview  -->
+    <div id="overlay" class="hidden">
+      <div id="scenario-overview" class="container">
+    
+        <h2>Overview</h2>
+        <div class="divider"></div>
+        <p>
+          In this troubleshooting exercise, it's your job to inspect the physical setup and diagnose the cause of the network issue using visual clues. You'll see Augmented Reality (AR) markers placed around the room. Use these markers to bring up a checklist to help you identify the potential issues in each area.
+          <br><br>
+          Once you've gathered all the necessary information, you can click the Finish Troubleshooting button at any time to present your findings to your instructor.
+          <br><br>
+          <span class="emphasis">Are you ready to get started?</span> Click the button below to begin the troubleshooting exercise.          
+        </p>
+        
+        <button id="start-btn" class="action-button full-width">Start Troubleshooting</button>
+      </div>
+    </div>
+
+    <!-- Checklist --> 
+    <div id="checklist" class="container hidden">
+      <div class="checklist-container">
+        <button id="close-overview" class="close"><i class="fas fa-times"></i></button>
+
+         <h2>Troubleshooting Checklist</h2>
+         <div class="divider"></div>
+          <p>
+            Perform the following visual checks and mark each item once verified. Use the <span class="emphasis">Notes</span> section to record any issues or observations.
+            <br><br>
+            When you're done with your observation, click the <span class="emphasis">Close (X)</span> button.
+          </p>
+
+        <div class="checklist-items">
+          <!-- Checklist items will be dynamically added here -->
+          
+          <div class="checklist-item" id="checklist-item-1">
+            <input type="checkbox" id="item-1">
+            <label for="item-1">Test 1</label>
+          </div>
+        
+          <div class="checklist-item" id="checklist-item-2">
+            <input type="checkbox" id="item-2">
+            <label for="item-2">Test 2</label>
+          </div>
+        
+          <div class="checklist-item" id="checklist-item-3">
+            <input type="checkbox" id="item-3">
+            <label for="item-3">Test 3</label>
+          </div>
+
+        </div>
+
+        <label class="spacer">Notes:</label>
+        <textarea class="checklist-notes" rows="4" cols="30" maxlength="500"></textarea>        
+      </div>
+    </div>
+
+    <a-scene embedded arjs>
       <!-- Image markers -->
       <a-marker id="marker-device" type="pattern" url="assets/pattern-device.patt"></a-marker>
       <a-marker id="marker-ethernet" type="pattern" url="assets/pattern-ethernet.patt"></a-marker>

@@ -1,3 +1,6 @@
+//----------------------------
+//Global Variables
+//----------------------------
 const markerList = [
     { id: 'marker-device', name: 'Device' },
     { id: 'marker-ethernet', name: 'Ethernet' },
@@ -5,6 +8,9 @@ const markerList = [
     { id: 'marker-router', name: 'Router' }
   ];
 
+  //----------------------------
+  // Event listeners
+  //----------------------------
   markerList.forEach(marker => {
     const el = document.getElementById(marker.id)
 
@@ -16,3 +22,11 @@ const markerList = [
       console.log(`${marker.name} marker lost`);
     })
   });
+
+  document.getElementById("start-btn").addEventListener("click", function() {
+    document.getElementById("overlay").classList.add("hidden");
+  });
+
+  //----------------------------
+  //
+  //----------------------------
