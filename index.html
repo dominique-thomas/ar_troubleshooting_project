@@ -11,11 +11,24 @@
   </head>
   <body style="margin: 0; overflow: hidden;">
 
-    <!-- Finish Button -->
-    <button id="finish-btn" class="action-button">Finish Troubleshooting</button>
 
+     <!-- Info Button -->
+     <div class="button-container">
+      <button class="about-button action-button" id="about-button"> About</button>
+      <button id="finish-btn" class="action-button finish-button">Finish Troubleshooting</button>
+     </div>
+    
+    <div id="info-popup" class="info-popup popup container hidden">
+      <button id="close-overview" class="close"><i class="fas fa-times"></i></button>
+      <h2>About</h2>
+      <div class="divider"></div>
+      <p>The training content is provided as-is and free to use.
+        The course design, website, and training materials were designed and developed by <span class="emphasis"><a href="https://www.linkedin.com/in/dominique-thomas-ab56b433/" target="_blank">Dominique Thomas</a></span>.</p>
+    </div>
+
+   
     <!-- Finish Troubleshooting? -->
-    <div id="finish-message" class="hidden">
+    <div id="finish-message" class="popup hidden">
       <div class="finish-message-container container">
         <h2>Finish Troubleshooting</h2>
         <div class="divider"></div>
@@ -26,7 +39,7 @@
     </div>
 
     <!-- Summary -->
-    <div id="summary" class="hidden">
+    <div id="summary" class="popup hidden">
       <div class="summary-container container">
         <h2>Summary</h2>
         <div class="divider"></div>
@@ -56,7 +69,7 @@
 
 
     <!-- Scenario Overview  -->
-    <div id="overlay" class="hidden">
+    <div id="overlay" class="popup hidden">
       <div id="scenario-overview" class="container">
     
         <h2>Overview</h2>
@@ -74,9 +87,9 @@
     </div>
 
     <!-- Checklist --> 
-    <div id="checklist" class="container hidden">
+    <div id="checklist" class="popup container hidden">
       <div class="checklist-container">
-        <button id="close-overview" class="close"><i class="fas fa-times"></i></button>
+        <button id="close-checklist" class="close"><i class="fas fa-times"></i></button>
 
          <h2>Troubleshooting Checklist</h2>
          <div class="divider"></div>
