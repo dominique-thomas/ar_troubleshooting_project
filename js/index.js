@@ -89,7 +89,11 @@ const markerList = [
     }    
 
     function isAnyPopupOpen() {
-      return !document.querySelector(".popup:not(.hidden)") === null;
+      const popups = document.querySelectorAll(".popup");      
+      return Array.from(popups).some(popup => {
+        const style = window.getComputedStyle(popup);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      });
     }
 
   //----------------------------
