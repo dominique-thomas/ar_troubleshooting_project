@@ -15,7 +15,8 @@
      <!-- Info Button -->
      <div id="nav-buttons" class="button-container hidden">
       <button id="about-button" class="about-button action-button"> About</button>
-      <button id="finish-button" class="action-button finish-button">Finish Troubleshooting</button>
+      <span class="markers-inspected">Markers Inspected: 0 of 4</span>
+      <button id="finish-button" class="action-button finish-button">Finish</button>
      </div>
     
     <div id="about-popup" class="about-popup popup container hidden">
@@ -30,7 +31,7 @@
       <div class="finish-popup-container container">
         <h2>Finish Troubleshooting</h2>
         <div class="divider"></div>
-        <p>Are you ready to finish troubleshooting? Note that once you finish, <span class="emphasis">you'll no longer be able to access the AR markers</span>, and you'll present your findings to your instructor.</p>
+        <p>Are you ready to finish troubleshooting? Note that once you finish, <span class="emphasis">you'll no longer be able to access the AR markers</span>, and you'll present your findings.</p>
         <button id="confirm-finish" class="action-button full-width">Yes, Finish Troubleshooting</button>
         <button id="cancel-finish" class="action-button full-width">Cancel</button>
       </div>
@@ -42,7 +43,7 @@
         <h2>Summary</h2>
         <div class="divider"></div>
 
-        <p>The following are observations you made during the troubleshooting scenario. Use this information to discuss your findings with your classmates or instructor. To restart the app, refresh the page (your data will not be saved).</p>
+        <p>The following are observations you made during the troubleshooting scenario. Use this information to discuss your findings with your classmates or instructor. To restart, refresh the page (your data will not be saved).</p>
     
         <div class="summary-item" id="summary-1">
           <label for="notes-1">Issue 1 Notes:</label>
@@ -75,11 +76,11 @@
         <p>
           In this troubleshooting exercise, it's your job to inspect the physical setup and diagnose the cause of the network issue using visual clues. You'll see Augmented Reality (AR) markers placed around the room. Use these markers to bring up a checklist to help you identify the potential issues in each area.
           <br><br>
-          Once you've gathered all the necessary information, you can click the Finish Troubleshooting button at any time to present your findings to your classmates or instructor.
+          Once you've gathered all the necessary information, you can click the Finish button at any time to present your findings to your classmates or instructor.
             
         </p>
         
-        <button id="overview-button" class="action-button full-width">Start Troubleshooting</button>
+        <button id="overview-button" class="action-button full-width">Start</button>
       </div>
     </div>
 
@@ -92,7 +93,7 @@
          <h2 class="checklist-title">Title</h2>
          <div class="divider"></div>
           <p>
-            Perform the following visual checks and mark each item once verified. Use the <span class="emphasis">Notes</span> section to record any observations or issues.
+            Perform the following visual checks and mark each item once verified. Use the Notes section to record any observations or issues.
       
           </p>
 
@@ -123,13 +124,13 @@
 
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; markersAreaEnabled: false;"
     >
-      <!-- Image markers -->
+       
       <a-marker id="marker-device" type="pattern" url="assets/pattern-device.patt"></a-marker>
       <a-marker id="marker-ethernet" type="pattern" url="assets/pattern-ethernet.patt"></a-marker>
       <a-marker id="marker-power" type="pattern" url="assets/pattern-power.patt"></a-marker>
       <a-marker id="marker-router" type="pattern" url="assets/pattern-router.patt"></a-marker>
 
-      <!-- Camera -->
+      
       <a-camera></a-camera>
     </a-scene>
     <script src="js/index.js"></script>

@@ -1,11 +1,12 @@
 //----------------------------
 //Global Variables
 //----------------------------
+let markersVisited = 0;
 const markerList = [
     { id: 'marker-device', name: 'Device' },
-    { id: 'marker-ethernet', name: 'Ethernet' },
+    { id: 'marker-cable', name: 'Cable' },
     { id: 'marker-power', name: 'Power' },
-    { id: 'marker-router', name: 'Router' }
+    { id: 'marker-network', name: 'Network' }
   ];
 
   function updateMarkerState(id, index, checked) {
@@ -13,16 +14,16 @@ const markerList = [
   }
 
   const checkListData = {
-    "marker-power": ["Power strip is plugged in", "Power switch is ON", "Devices are connected to power strip."],
-    "marker-ethernet": ["Cable connected at both ends", "No fraying or exposed wires", "Cable is seated firmly"],
-    "marker-router": ["Router has power", "Status lights are green", "Cable is connected to modem"],
-    "marker-device": ["Device is powered on", "No physical damage to ethernet port", "No signs of overheating (e.g., burn marks)"]
+    "marker-power": ["Power source is plugged in", "Power switch is ON", "Devices are connected to power source"],
+    "marker-cable": ["Cable connected at both ends", "No fraying or exposed wires", "Cable is seated firmly"],
+    "marker-network": ["Network device has power", "Status lights show activity", "Cables are connected"],
+    "marker-device": ["Device is powered on", "No physical damage to port", "No signs of overheating (e.g., burn marks)"]
   };
   
   const markerState = {
     "marker-power": { wasVisited: false, checks: [false, false, false], notes: "" },
-    "marker-ethernet": { wasVisited: false, checks: [false, false, false], notes: "" },
-    "marker-router": { wasVisited: false, checks: [false, false, false], notes: "" },
+    "marker-cable": { wasVisited: false, checks: [false, false, false], notes: "" },
+    "marker-network": { wasVisited: false, checks: [false, false, false], notes: "" },
     "marker-device": { wasVisited: false, checks: [false, false, false], notes: "" }
   };
 
@@ -50,6 +51,14 @@ const markerList = [
       navButtonContainer.classList.remove("hidden");
     }
 
+    function visitMarker(id) {
+      if (!markerState[id].wasVisited) {
+          markerState[id].wasVisited = true;
+          markersVisited++;
+          document.querySelector('.markers-inspected').textContent = `Markers Inspected: ${markersVisited} of 4`;
+      }
+   }  
+
     function showChecklist(id) {
       const title = document.querySelector(".checklist-title");
       const textarea = document.querySelector(".checklist-notes");
@@ -61,6 +70,8 @@ const markerList = [
       isCheckListOpen = true;
       checklistPopup.classList.remove("hidden");
       hideNavButtons();
+
+      visitMarker(id);
     
       title.textContent = "(" + id.replace("marker-", "").replace(/^./, (match) => match.toUpperCase()) + ")";
       state.wasVisited = true;
@@ -99,7 +110,8 @@ const markerList = [
   //----------------------------
   // Event Listeners
   //----------------------------
-  markerList.forEach(marker => {
+ 
+ markerList.forEach(marker => {
     const el = document.getElementById(marker.id);
 
     el.addEventListener("markerFound", () => {

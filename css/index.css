@@ -34,7 +34,6 @@ p {
 
   .container {
     color: #f5f5f5;
-    position: relative;
   }
   
   .container h2 {
@@ -144,6 +143,8 @@ p {
   
   .checklist-title{
     margin-top: 0px !important;
+    color:#e0e0ff !important;
+    font-weight: normal;
   }
 
   .checklist-item {
@@ -226,3 +227,10 @@ p {
     z-index: 1000;
   }
   
+  .markers-inspected{
+    border-radius: 8px;
+    background-color: #e0e0ff;
+    color: #311152;
+    padding: 12px 20px;
+    margin-top:10px;
+  }
