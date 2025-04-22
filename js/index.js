@@ -1,7 +1,7 @@
 //----------------------------
 //Global Variables
 //----------------------------
-let isCheckListOpen = false;
+let isCheckListOpen = true;
 
 const markerList = [
     { id: 'marker-device', name: 'Device' },
@@ -113,6 +113,7 @@ const markerList = [
   overviewButton.addEventListener("click", function () {
     overviewPopup.classList.add("hidden"); 
     showNavButtons();
+    isCheckListOpen = false;
   });
 
   aboutButton.addEventListener("click", function () {
