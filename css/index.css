@@ -105,7 +105,7 @@ p {
   }
   
   .hidden{
-    display: none;
+    display: none !important;
   }
 
   label {
@@ -133,7 +133,6 @@ p {
     height: 100px;
   }
   
-
   .checklist-item {
     display: flex;
     align-items: center;
@@ -147,6 +146,10 @@ p {
   .checklist-item input {
     margin-right: 10px;
   }
+
+  .checklist-item > label {
+    font-weight: normal !important;
+  }
   
   .checklist-label label {
     font-size: 15px;
@@ -157,8 +160,6 @@ p {
   .spacer{
     padding-top: 10px;
   }
-
-
 
   .summary-item{
     padding-bottom: 10px;
@@ -187,6 +188,8 @@ p {
   
   .summary-container {
     padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
   }
 
   a{
@@ -199,7 +202,7 @@ p {
     border-radius: 8px;
   }
  
-  .button-container {
+  .button-container{
     position: absolute;
     top: 10px;
     left: 10px;
@@ -207,5 +210,6 @@ p {
     display: flex;
     justify-content: space-between;
     gap: 10px; 
+    z-index: 1000;
   }
   
