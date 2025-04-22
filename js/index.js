@@ -27,6 +27,76 @@ const markerList = [
     "marker-device": { wasVisited: false, checks: [false, false, false], notes: "" }
   };
 
+    
+  //----------------------------
+  // Helper Functions
+  //----------------------------
+  function hideNavButtons(){
+    const navButtonContainer = document.getElementById("nav-buttons");
+    navButtonContainer.classList.add("hidden");
+  }
+
+  function showNavButtons(){
+    const navButtonContainer = document.getElementById("nav-buttons");
+    navButtonContainer.classList.remove("hidden");
+  }
+
+  function visitMarker(id) {
+    if (!markerState[id].wasVisited) {
+        markerState[id].wasVisited = true;
+        markersVisited++;
+        document.querySelector('.markers-inspected').textContent = `Markers Inspected: ${markersVisited} of 4`;
+    }
+ }  
+
+  function showChecklist(id) {
+    const title = document.querySelector(".checklist-title");
+    const textarea = document.querySelector(".checklist-notes");
+    const checklistItems = document.querySelectorAll(".checklist-item");
+  
+    const items = checkListData[id];
+    const state = markerState[id];
+  
+    checklistPopup.classList.remove("hidden");
+    hideNavButtons();
+    visitMarker(id);
+  
+    title.textContent = "(" + id.replace("marker-", "").replace(/^./, (match) => match.toUpperCase()) + ")";
+    state.wasVisited = true;
+  
+    checklistItems.forEach((item, i) => {
+      const checkbox = item.querySelector("input");
+      const label = item.querySelector("label");
+  
+      checkbox.checked = state.checks[i];
+      checkbox.onchange = () => updateMarkerState(id, i, checkbox.checked);
+      label.textContent = items[i];
+    });
+  
+    textarea.value = state.notes || "N/A";
+    textarea.oninput = () => {
+      state.notes = textarea.value;
+    };
+  }
+
+  function generateSummary() {
+    Object.keys(markerState).forEach((key, index) => {
+      const state = markerState[key];
+      const summaryElement = document.getElementById(`notes-${index + 1}`); 
+      summaryElement.textContent = state.notes || "N/A";
+    });
+  }    
+
+  function isAnyPopupOpen() {
+    alert('isAnyPopupOpen called')
+    const popups = document.querySelectorAll(".popup");      
+    return Array.from(popups).some(popup => {
+      const style = window.getComputedStyle(popup);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  }
+
+
   //----------------------------
   // Event Listeners
   //----------------------------
@@ -51,7 +121,7 @@ const markerList = [
         }
       });
     });
-    
+
     overviewButton.addEventListener("click", function () {
       overviewPopup.classList.add("hidden"); 
       showNavButtons();
@@ -88,71 +158,3 @@ const markerList = [
     });
   });
   
-  
-  //----------------------------
-  // Helper Functions
-  //----------------------------
-  function hideNavButtons(){
-    const navButtonContainer = document.getElementById("nav-buttons");
-    navButtonContainer.classList.add("hidden");
-  }
-
-  function showNavButtons(){
-    const navButtonContainer = document.getElementById("nav-buttons");
-    navButtonContainer.classList.remove("hidden");
-  }
-
-  function visitMarker(id) {
-    if (!markerState[id].wasVisited) {
-        markerState[id].wasVisited = true;
-        markersVisited++;
-        document.querySelector('.markers-inspected').textContent = `Markers Inspected: ${markersVisited} of 4`;
-    }
- }  
-
-  function showChecklist(id) {
-    const title = document.querySelector(".checklist-title");
-    const textarea = document.querySelector(".checklist-notes");
-    const checklistItems = document.querySelectorAll(".checklist-item");
-  
-    const items = checkListData[id];
-    const state = markerState[id];
-  
-    checklistPopup.classList.remove("hidden");
-    hideNavButtons();
-
-    visitMarker(id);
-  
-    title.textContent = "(" + id.replace("marker-", "").replace(/^./, (match) => match.toUpperCase()) + ")";
-    state.wasVisited = true;
-  
-    checklistItems.forEach((item, i) => {
-      const checkbox = item.querySelector("input");
-      const label = item.querySelector("label");
-  
-      checkbox.checked = state.checks[i];
-      checkbox.onchange = () => updateMarkerState(id, i, checkbox.checked);
-      label.textContent = items[i];
-    });
-  
-    textarea.value = state.notes || "N/A";
-    textarea.oninput = () => {
-      state.notes = textarea.value;
-    };
-  }
-
-  function generateSummary() {
-    Object.keys(markerState).forEach((key, index) => {
-      const state = markerState[key];
-      const summaryElement = document.getElementById(`notes-${index + 1}`); 
-      summaryElement.textContent = state.notes || "N/A";
-    });
-  }    
-
-  function isAnyPopupOpen() {
-    const popups = document.querySelectorAll(".popup");      
-    return Array.from(popups).some(popup => {
-      const style = window.getComputedStyle(popup);
-      return style.display !== 'none' && style.visibility !== 'hidden';
-    });
-  }
