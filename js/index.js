@@ -16,7 +16,7 @@ const markerList = [
     "marker-power": ["Power strip is plugged in", "Power switch is ON", "Devices are connected to power strip."],
     "marker-ethernet": ["Cable connected at both ends", "No fraying or exposed wires", "Cable is seated firmly"],
     "marker-router": ["Router has power", "Status lights are green", "Cable is connected to modem"],
-    "marker-device": ["Device is powered on", "No physical damage to ethernet port", "No signs of overheating (e.g., burn marks, melting, etc.)"]
+    "marker-device": ["Device is powered on", "No physical damage to ethernet port", "No signs of overheating (e.g., burn marks)"]
   };
   
   const markerState = {
@@ -62,7 +62,7 @@ const markerList = [
       checklistPopup.classList.remove("hidden");
       hideNavButtons();
     
-      title.textContent = id.replace("-", " ").toUpperCase();
+      title.textContent = "(" + id.replace("marker-", "").replace(/^./, (match) => match.toUpperCase()) + ")";
       state.wasVisited = true;
     
       checklistItems.forEach((item, i) => {

@@ -34,6 +34,7 @@ p {
    margin-top: 20px;
    font-size: larger;
    color: #9fa2ff;
+   margin-bottom: 0;
   }
 
   .container p {
@@ -133,6 +134,10 @@ p {
     height: 100px;
   }
   
+  .checklist-title{
+    margin-top: 0px !important;
+  }
+
   .checklist-item {
     display: flex;
     align-items: center;
