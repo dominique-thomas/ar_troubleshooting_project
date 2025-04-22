@@ -34,7 +34,7 @@
 
     <div id="finish-popup" class="popup hidden">
       <div class="finish-popup-container container">
-        <h2>Finish Troubleshooting</h2>
+        <h2>Finish</h2>
         <div class="divider"></div>
         <p>Are you ready to finish troubleshooting? Note that once you finish, <span class="emphasis">you'll no longer be able to access the AR markers</span>, and you'll present your findings.</p>
         <button id="confirm-finish" class="action-button full-width">Yes, Finish Troubleshooting</button>
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; markersAreaEnabled: true;"
+    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; markersAreaEnabled: false;"
     >
        
       <a-marker id="marker-device" type="pattern" url="assets/pattern-device.patt"></a-marker>
