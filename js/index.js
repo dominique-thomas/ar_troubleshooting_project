@@ -1,8 +1,6 @@
 //----------------------------
 //Global Variables
 //----------------------------
-let isCheckListOpen = true;
-
 const markerList = [
     { id: 'marker-device', name: 'Device' },
     { id: 'marker-ethernet', name: 'Ethernet' },
@@ -90,24 +88,21 @@ const markerList = [
       });
     }    
 
+    function isAnyPopupOpen() {
+      return !document.querySelector(".popup:not(.hidden)") === null;
+    }
+
   //----------------------------
   // Event Listeners
   //----------------------------
   markerList.forEach(marker => {
-    const el = document.getElementById(marker.id)
+    const el = document.getElementById(marker.id);
 
-    el.addEventListener('markerFound', () => {
-
-      //Do nothing if the checklist is already open
-      if (isCheckListOpen) return;
-
-      const markerKey = marker.id.replace("marker-", "");      
-      showChecklist(markerKey);
-    })
-
-    el.addEventListener('markerLost', () => {
-      console.log(`${marker.name} marker lost`);
-    })
+    el.addEventListener("markerFound", () => {
+      if (!isAnyPopupOpen()) {
+        showChecklist(marker.id);
+      }
+    });
   });
 
   overviewButton.addEventListener("click", function () {
