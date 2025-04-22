@@ -22,6 +22,14 @@ p {
     padding: 20px;
     width: 80%;
     max-width: 400px;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 600px) {
+    .popup {
+      width: 75%; 
+      max-width: 300px; 
+    }
   }
 
   .container {
