@@ -112,15 +112,6 @@ const markerList = [
     const overviewPopup = document.getElementById("overview-popup");
     const overviewButton = document.getElementById("overview-button");
     const checklistPopup = document.getElementById("checklist-popup");
-  
-    markerList.forEach(marker => {
-      const el = document.getElementById(marker.id);
-      el.addEventListener("markerFound", () => {
-        if (!isAnyPopupOpen()) {
-          showChecklist(marker.id);
-        }
-      });
-    });
 
     overviewButton.addEventListener("click", function () {
       overviewPopup.classList.add("hidden"); 
@@ -156,5 +147,18 @@ const markerList = [
         parentPopup.classList.add("hidden");
       });
     });
+
+      
+    markerList.forEach(marker => {
+      const el = document.getElementById(marker.id);
+     
+      el.addEventListener("markerFound", () => {
+        alert('marker found')
+        if (!isAnyPopupOpen()) {
+          showChecklist(marker.id);
+        }
+      });
+    });
+    
   });
   
