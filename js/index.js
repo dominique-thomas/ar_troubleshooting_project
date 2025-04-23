@@ -57,7 +57,7 @@ const markerList = [
     const items = checkListData[id];
     const state = markerState[id];
   
-    checklistPopup.classList.remove("hidden");
+    document.getElementById("checklist-popup").classList.remove("hidden");
     hideNavButtons();
     visitMarker(id);
   
@@ -113,9 +113,7 @@ const markerList = [
           
     markerList.forEach(marker => {
       const el = document.getElementById(marker.id);
-     
-      el.addEventListener("markerFound", () => {
-        alert('marker found.')
+      el.addEventListener("markerFound", () => {       
         if (!isAnyPopupOpen()) {
           showChecklist(marker.id);
         }
