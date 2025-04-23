@@ -44,6 +44,12 @@ p {
    margin-bottom: 0;
   }
 
+  @media (max-width: 600px) {
+    .container h2 {
+      margin-top: 35px; 
+    }
+  }
+
   .container p {
     font-size: 15px;
     color: #f5f5f5;
