@@ -1,20 +1,19 @@
-name: Build and Deploy
+name: Deploy Static Site
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main] 
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Upload artifact (optional)
+        uses: actions/upload-artifact@v3
         with:
-          node-version: '20'
-      - run: npm install
-      - run: npm run build
+          name: site
+          path: .  
