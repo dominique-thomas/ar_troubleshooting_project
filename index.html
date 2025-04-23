@@ -130,10 +130,18 @@
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; markersAreaEnabled: false;"
     >
        
-      <a-marker id="marker-device" type="pattern" url="assets/pattern-device.patt"></a-marker>
-      <a-marker id="marker-cable" type="pattern" url="assets/pattern-cable.patt"></a-marker>
-      <a-marker id="marker-power" type="pattern" url="assets/pattern-power.patt"></a-marker>
-      <a-marker id="marker-network" type="pattern" url="assets/pattern-network.patt"></a-marker>
+      <a-marker id="marker-device" type="pattern" url="assets/pattern-device.patt">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
+      </a-marker>
+      <a-marker id="marker-cable" type="pattern" url="assets/pattern-cable.patt">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
+      </a-marker>
+      <a-marker id="marker-power" type="pattern" url="assets/pattern-power.patt">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
+      </a-marker>
+      <a-marker id="marker-network" type="pattern" url="assets/pattern-network.patt">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
+      </a-marker>
       
       <a-camera></a-camera>
     </a-scene>

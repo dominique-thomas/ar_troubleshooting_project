@@ -115,6 +115,7 @@ const markerList = [
       const el = document.getElementById(marker.id);
      
       el.addEventListener("markerFound", () => {
+        alert('marker found.')
         if (!isAnyPopupOpen()) {
           showChecklist(marker.id);
         }
