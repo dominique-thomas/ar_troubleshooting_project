@@ -95,6 +95,11 @@ const markerList = [
     });
   }
 
+  function showPrompt(){
+    document.getElementById("access-popup").classList.remove("hidden");    
+    document.getElementById("overview-popup").classList.add("hidden");    
+  }
+
   //----------------------------
   // Event Listeners
   //----------------------------
@@ -110,6 +115,7 @@ const markerList = [
     const overviewPopup = document.getElementById("overview-popup");
     const overviewButton = document.getElementById("overview-button");
     const checklistPopup = document.getElementById("checklist-popup");
+    const accessPopup = document.getElementById("access-popup");
           
     markerList.forEach(marker => {
       const el = document.getElementById(marker.id);
@@ -150,6 +156,11 @@ const markerList = [
         if (!checklistPopup.classList.contains("hidden")) {
           showNavButtons();
         }
+
+        if (!accessPopup.classList.contains("hidden")) {
+          overviewPopup.classList.remove("hidden"); 
+        }
+
         const parentPopup = button.closest(".popup");
         parentPopup.classList.add("hidden");
       });

@@ -45,6 +45,15 @@
       </div>
     </div>
 
+    <div id="access-popup" class="access-popup popup container hidden">
+      <button id="close-access" class="close"><i class="fas fa-times"></i></button>
+      <h2>Camera Access Prompt</h2>
+      <div class="divider"></div>
+      <p>       
+        <img src="images/camera_prompt.png" class="centered-image" alt="Camera Access Prompt">
+      </p>
+    </div>
+
     <!-- Summary -->
     <div id="summary-popup" class="popup hidden">
       <div class="summary-container container">
@@ -85,6 +94,10 @@
           In this troubleshooting exercise, it's your job to inspect the physical setup and diagnose the cause of the network issue using visual clues. You'll see Augmented Reality (AR) markers placed around the room. Use these markers to bring up a checklist to help you identify the potential issues in each area.
           <br><br>
           Once you've gathered all the necessary information, you can click the Finish button at any time to present your findings to your classmates or instructor.
+
+          <br><br>
+          To use this project, you'll need to allow camera access.
+          If prompted, be sure to grant access. You'll only need to do this once. <a href="#" onclick="showPrompt()">Click here to see an example.</a>
             
         </p>
         
