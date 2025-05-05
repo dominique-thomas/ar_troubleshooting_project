@@ -14,7 +14,14 @@
   </head>
   <body style="margin: 0; overflow: hidden;">
 
+    <div id="cameraWarning" class="warning hidden">
+      <div class="ui negative message center">
+        <div class="warning-header">Camera Access Not Supported</div>
+        <p>Your browser does not support camera access. Please switch to a Chromium-based browser such as Chrome.</p>
+      </div>
+    </div> 
 
+    <div id="main" class="hidden"> 
      <!-- Info Button -->
      <div id="nav-buttons" class="button-container hidden">
       <button id="about-button" class="about-button action-button"> About</button>
@@ -31,7 +38,6 @@
         
         <br><br>This project is provided as-is and free to use. The website and instructor guide were designed and developed by <span class="emphasis"><a href="https://www.linkedin.com/in/dominique-thomas-ab56b433/" target="_blank">Dominique Thomas</a></span>.
        <br><br>Icons used for the AR markers were provided by <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>. 
-
       </p>
     </div>
 
@@ -142,6 +148,8 @@
         <textarea class="checklist-notes" rows="4" cols="30" maxlength="500"></textarea>        
       </div>
     </div>
+
+  </div>
 
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; markersAreaEnabled: false;"
     >

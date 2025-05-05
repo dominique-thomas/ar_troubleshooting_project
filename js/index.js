@@ -27,7 +27,6 @@ const markerList = [
     "marker-device": { wasVisited: false, checks: [false, false, false], notes: "" }
   };
 
-    
   //----------------------------
   // Helper Functions
   //----------------------------
@@ -100,70 +99,79 @@ const markerList = [
     document.getElementById("overview-popup").classList.add("hidden");    
   }
 
+
   //----------------------------
   // Event Listeners
-  //----------------------------
-  window.addEventListener("DOMContentLoaded", () => {
-    const closePopup = document.querySelectorAll(".close");
-    const aboutButton = document.getElementById("about-button");
-    const aboutPopup = document.getElementById("about-popup");
-    const finishButton = document.getElementById("finish-button");
-    const finishPopup = document.getElementById("finish-popup");
-    const confirmFinishButton = document.getElementById("confirm-finish");
-    const cancelFinishButton = document.getElementById("cancel-finish");
-    const summaryPopup = document.getElementById("summary-popup");
-    const overviewPopup = document.getElementById("overview-popup");
-    const overviewButton = document.getElementById("overview-button");
-    const checklistPopup = document.getElementById("checklist-popup");
-    const accessPopup = document.getElementById("access-popup");
-          
-    markerList.forEach(marker => {
-      const el = document.getElementById(marker.id);
-      el.addEventListener("markerFound", () => {       
-        if (!isAnyPopupOpen()) {
-          showChecklist(marker.id);
-        }
+  //----------------------------  
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    document.getElementById("cameraWarning").classList.remove("hidden");
+  } else {
+    document.getElementById("main").classList.remove("hidden");
+    init();
+  }
+    
+  function init(){
+    window.addEventListener("DOMContentLoaded", () => {
+      const closePopup = document.querySelectorAll(".close");
+      const aboutButton = document.getElementById("about-button");
+      const aboutPopup = document.getElementById("about-popup");
+      const finishButton = document.getElementById("finish-button");
+      const finishPopup = document.getElementById("finish-popup");
+      const confirmFinishButton = document.getElementById("confirm-finish");
+      const cancelFinishButton = document.getElementById("cancel-finish");
+      const summaryPopup = document.getElementById("summary-popup");
+      const overviewPopup = document.getElementById("overview-popup");
+      const overviewButton = document.getElementById("overview-button");
+      const checklistPopup = document.getElementById("checklist-popup");
+      const accessPopup = document.getElementById("access-popup");
+            
+      markerList.forEach(marker => {
+        const el = document.getElementById(marker.id);
+        el.addEventListener("markerFound", () => {       
+          if (!isAnyPopupOpen()) {
+            showChecklist(marker.id);
+          }
+        });
+      });
+
+      overviewButton.addEventListener("click", function () {
+        overviewPopup.classList.add("hidden"); 
+        showNavButtons();
+      });
+
+      aboutButton.addEventListener("click", function () {
+        aboutPopup.classList.remove("hidden"); 
+      });
+
+      finishButton.addEventListener("click", function () {
+        finishPopup.classList.remove("hidden"); 
+      });
+
+      cancelFinishButton.addEventListener("click", function () {
+        finishPopup.classList.add("hidden");
+      });
+
+      confirmFinishButton.addEventListener("click", function () {
+        finishPopup.classList.add("hidden"); 
+        summaryPopup.classList.remove("hidden");
+        hideNavButtons();
+        generateSummary();
+      });
+
+      closePopup.forEach(button => {
+        button.addEventListener("click", function () {
+
+          if (!checklistPopup.classList.contains("hidden")) {
+            showNavButtons();
+          }
+
+          if (!accessPopup.classList.contains("hidden")) {
+            overviewPopup.classList.remove("hidden"); 
+          }
+
+          const parentPopup = button.closest(".popup");
+          parentPopup.classList.add("hidden");
+        });
       });
     });
-
-    overviewButton.addEventListener("click", function () {
-      overviewPopup.classList.add("hidden"); 
-      showNavButtons();
-    });
-
-    aboutButton.addEventListener("click", function () {
-      aboutPopup.classList.remove("hidden"); 
-    });
-
-    finishButton.addEventListener("click", function () {
-      finishPopup.classList.remove("hidden"); 
-    });
-
-    cancelFinishButton.addEventListener("click", function () {
-      finishPopup.classList.add("hidden");
-    });
-
-    confirmFinishButton.addEventListener("click", function () {
-      finishPopup.classList.add("hidden"); 
-      summaryPopup.classList.remove("hidden");
-      hideNavButtons();
-      generateSummary();
-    });
-
-    closePopup.forEach(button => {
-      button.addEventListener("click", function () {
-
-        if (!checklistPopup.classList.contains("hidden")) {
-          showNavButtons();
-        }
-
-        if (!accessPopup.classList.contains("hidden")) {
-          overviewPopup.classList.remove("hidden"); 
-        }
-
-        const parentPopup = button.closest(".popup");
-        parentPopup.classList.add("hidden");
-      });
-    });
-  });
-  
+}
