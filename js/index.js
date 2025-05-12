@@ -1,3 +1,9 @@
+/**
+ * Project: AR Troubleshooting Project
+ * Description: JavaScript logic supporting AR interaction and student navigation through the module.
+ * Author: Dominique Thomas (github.com/dominique-thomas)
+ * License: Shared publicly for demonstration purposes only. Reuse or redistribution not permitted without permission.
+ */
 //----------------------------
 //Global Variables
 //----------------------------
