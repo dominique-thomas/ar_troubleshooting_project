@@ -1,7 +1,12 @@
+/*
+  Project: AR Troubleshooting Project
+  Description: Stylesheet for layout and instructional content.
+  Author: Dominique Thomas (github.com/dominique-thomas)
+  License: Shared publicly for demonstration purposes only. Reuse or redistribution not permitted without permission.
+*/
 body{
     font-family: 'Montserrat', sans-serif;
 }
-
 
 h1, h2, h3, h4 {
     font-weight: 700;
